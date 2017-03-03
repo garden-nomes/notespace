@@ -5,12 +5,12 @@ import {
 
 const initialState = [
   { id: 0, from: 0, to: 1 },
-  { id: 0, from: 0, to: 2 },
-  { id: 0, from: 0, to: 3 },
-  { id: 0, from: 0, to: 5 },
-  { id: 0, from: 1, to: 2 },
-  { id: 0, from: 3, to: 4 },
-  { id: 0, from: 4, to: 5 }
+  { id: 1, from: 0, to: 2 },
+  { id: 2, from: 0, to: 3 },
+  { id: 3, from: 0, to: 5 },
+  { id: 4, from: 1, to: 2 },
+  { id: 5, from: 3, to: 4 },
+  { id: 6, from: 4, to: 5 }
 ];
 
 export default function reducer(state = initialState, action) {
