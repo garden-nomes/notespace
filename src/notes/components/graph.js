@@ -3,16 +3,21 @@ import { DataSet, Network } from 'vis';
 import uuid from 'uuid';
 
 const OPTIONS = {
-  'nodes': {
-    'borderWidth': 0,
-    'borderWidthSelected': 0,
-    'color': {
-      'background': '#eceeef',
-      'highlight': { 'background': '#f7f7f9' }
+  nodes: {
+    borderWidth: 0,
+    borderWidthSelected: 0,
+    color: {
+      background: '#eceeef',
+      highlight: { background: '#EAEFBD' }
     },
-    'font': { 'color': '#673C4F' }
+    font: { color: '#673C4F' }
   },
-  'edges': { 'color': '#eceeef' }
+  edges: {
+    color: {
+      color: '#eceeef',
+      highlight: '#EAEFBD'
+    }
+  }
 };
 
 class Graph extends Component {
@@ -37,7 +42,7 @@ class Graph extends Component {
         e.nodes.length > 0) {
       const nodeId = e.nodes[0];
       const selectedId = e.previousSelection.nodes[0];
-      this.edges.add({ 'from': nodeId, 'to': selectedId });
+      this.edges.add({ from: nodeId, to: selectedId });
 
       // prevent graph from selecting new node
       this.network.selectNodes([selectedId]);
@@ -50,7 +55,7 @@ class Graph extends Component {
     const id = uuid.v4();
     this.nodes.add({
       id, x, y,
-      'label': 'new!'
+      label: 'new!'
     });
 
     this.network.selectNodes([id]);
