@@ -20,14 +20,27 @@ class App extends Component {
     const { selectNote } = this;
     const { notes, connections, addNote, editNote, addConnection } = this.props;
     const { selectedNote } = this.state;
-    const note = selectedNote ?
-                       notes.find(note => note.id === selectedNote) :
-                       null;
+
+    const note = selectedNote !== null ?
+      notes.find(note => note.id === selectedNote) :
+      null;
+
+    const connected = selectedNote !== null ?
+      connections.map(connection => {
+        if (connection.from === selectedNote) {
+          return notes.find(note => note.id === connection.to);
+        } else if (connection.to === selectedNote) {
+          return notes.find(note => note.id === connection.from);
+        } else {
+          return null;
+        }
+      }).filter(note => note !== null) :
+      null;
 
     return (
       <div className="app">
         {selectedNote !== null &&
-          <Panel note={note} editNote={editNote} />
+          <Panel note={note} connected={connected} editNote={editNote} />
         }
 
         <Graph

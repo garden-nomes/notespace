@@ -16,7 +16,7 @@ class Panel extends Component {
 
   render() {
     const { edit } = this.state;
-    const { note, editNote } = this.props;
+    const { note, connected, editNote } = this.props;
 
     return (
       <div id="panel" className="container">
@@ -29,7 +29,7 @@ class Panel extends Component {
         {edit ?
           <Form note={note} editNote={editNote} />
         :
-          <Note note={note} />
+          <Note note={note} connected={connected} />
         }
       </div>
     );
@@ -38,6 +38,7 @@ class Panel extends Component {
 
 Panel.propTypes = {
   note: PropTypes.object.isRequired,
+  connected: PropTypes.array.isRequired,
   editNote: PropTypes.func.isRequired
 };
 
