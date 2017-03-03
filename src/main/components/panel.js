@@ -54,6 +54,7 @@ class Panel extends Component {
             note={note}
             connected={connected}
             deleteConnectionByNoteId={this.deleteConnectionByNoteId}
+            selectNote={selectNote}
           />
         }
       </div>
@@ -67,7 +68,8 @@ Panel.propTypes = {
   connections: PropTypes.array.isRequired,
   editNote: PropTypes.func.isRequired,
   deleteNote: PropTypes.func.isRequired,
-  deleteConnection: PropTypes.func.isRequired
+  deleteConnection: PropTypes.func.isRequired,
+  selectNote: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -97,6 +99,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => ({
   }).filter(connection =>
     connection !== null
   ),
+  selectNote: ownProps.selectNote,
   ...dispatchProps
 });
 

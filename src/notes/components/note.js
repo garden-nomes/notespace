@@ -1,16 +1,21 @@
 import React, { PropTypes } from 'react';
 import ReactMarkdown from 'react-markdown';
 
-const Note = ({ note, connected, deleteConnectionByNoteId }) => (
+const Note = ({ note, connected, deleteConnectionByNoteId, selectNote }) => (
   <div className="note">
     <ReactMarkdown source={note.text} />
 
-    <h5>Connected notes:</h5>
+    <hr />
+    <h6>Connected notes:</h6>
     <ul>
       {connected.map(note =>
         <li key={note.id}>
-          {note.text}
+          <a href="#" onClick={() => selectNote(note.id)}>
+            {note.text}
+          </a>
+
           &nbsp;
+
           <a
             className="small"
             href="#"
@@ -25,7 +30,9 @@ const Note = ({ note, connected, deleteConnectionByNoteId }) => (
 
 Note.propTypes = {
   note: PropTypes.object.isRequired,
-  connected: PropTypes.array.isRequired
+  connected: PropTypes.array.isRequired,
+  deleteConnectionByNoteId: PropTypes.array.isRequired,
+  selectNote: PropTypes.array.isRequired
 };
 
 export default Note;

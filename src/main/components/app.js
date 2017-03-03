@@ -32,8 +32,10 @@ class App extends Component {
 
     return (
       <div className="app">
-        {selectedNote !== null && <Panel noteId={selectedNote} /> }
-        <Graph selectNote={selectNote} />
+        {selectedNote !== null &&
+          <Panel selectNote={selectNote} noteId={selectedNote} />
+        }
+        <Graph selectedNote={selectedNote} selectNote={selectNote} />
       </div>
     );
   }

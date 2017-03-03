@@ -51,10 +51,14 @@ class Graph extends Component {
   }
 
   componentDidUpdate() {
-    const { nodes, edges, deleteConnection } = this.props;
+    const { selectedNote, nodes, edges, deleteConnection } = this.props;
 
     this.nodes.update(nodes);
     this.edges.update(edges);
+
+    if (selectedNote !== null) {
+      this.network.selectNodes([selectedNote]);
+    }
 
     // update doesn't remove items
     this.nodes.get().forEach(graphNode => {
@@ -138,6 +142,7 @@ Graph.propTypes = {
   addNote: PropTypes.func.isRequired,
   addConnection: PropTypes.func.isRequired,
   deleteConnection: PropTypes.func.isRequired,
+  selectedNote: PropTypes.number.isRequired,
   selectNote: PropTypes.func.isRequired
 };
 
