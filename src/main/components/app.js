@@ -1,20 +1,43 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 
-import { Graph, addNote } from '../../notes';
+import Panel from './panel';
+import { Graph, addNote, editNote } from '../../notes';
 import { addConnection } from '../../connections';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { selectedNote: null };
+    this.selectNote = this.selectNote.bind(this);
+  }
+
+  selectNote(id) {
+    this.setState({ selectedNote: id });
+  }
+
   render() {
-    const { notes, connections, addNote, addConnection } = this.props;
+    const { selectNote } = this;
+    const { notes, connections, addNote, editNote, addConnection } = this.props;
+    const { selectedNote } = this.state;
+    const note = selectedNote ?
+                       notes.find(note => note.id === selectedNote) :
+                       null;
 
     return (
-      <Graph
-        notes={notes}
-        connections={connections}
-        addNote={addNote}
-        addConnection={addConnection}
-      />
+      <div className="app">
+        {selectedNote !== null &&
+          <Panel note={note} editNote={editNote} />
+        }
+
+        <Graph
+          notes={notes}
+          connections={connections}
+          addNote={addNote}
+          selectNote={selectNote}
+          addConnection={addConnection}
+        />
+      </div>
     );
   }
 }
@@ -23,6 +46,7 @@ App.propTypes = {
   notes: PropTypes.array.isRequired,
   connections: PropTypes.array.isRequired,
   addNote: PropTypes.func.isRequired,
+  editNote: PropTypes.func.isRequired,
   addConnection: PropTypes.func.isRequired
 };
 
@@ -33,5 +57,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { addNote, addConnection }
+  { addNote, addConnection, editNote }
 )(App);

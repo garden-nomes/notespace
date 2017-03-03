@@ -1,20 +1,26 @@
 import React, { PropTypes, Component } from 'react';
 import { DataSet, Network } from 'vis';
 
+const COLORS = {
+  background: '#696D7D',
+  main: '#81C3D7',
+  highlight: '#D9DCD6'
+};
+
 const OPTIONS = {
   nodes: {
     borderWidth: 0,
     borderWidthSelected: 0,
     color: {
-      background: '#eceeef',
-      highlight: { background: '#EAEFBD' }
+      background: COLORS.main,
+      highlight: { background: COLORS.highlight }
     },
-    font: { color: '#673C4F' }
+    font: { color: COLORS.background }
   },
   edges: {
     color: {
-      color: '#eceeef',
-      highlight: '#EAEFBD'
+      color: COLORS.main,
+      highlight: COLORS.highlight
     }
   }
 };
@@ -26,6 +32,7 @@ class Graph extends Component {
 
     this.initGraph = this.initGraph.bind(this);
     this.initData = this.initData.bind(this);
+    this.handleSelectNode = this.handleSelectNode.bind(this);
     this.handleDeselectNode = this.handleDeselectNode.bind(this);
     this.handleDoubleClick = this.handleDoubleClick.bind(this);
   }
@@ -44,7 +51,17 @@ class Graph extends Component {
     this.edges.update(edges);
   }
 
+  handleSelectNode(e) {
+    const { selectNote } = this.props;
+    const id = e.nodes[0];
+
+    selectNote(id);
+  }
+
   handleDeselectNode(e) {
+    const { selectNote } = this.props;
+    selectNote(null);
+
     if (e.event.srcEvent.shiftKey &&
         e.previousSelection.nodes.length > 0 &&
         e.nodes.length > 0) {
@@ -79,6 +96,7 @@ class Graph extends Component {
     const options = OPTIONS;
     this.network = new Network(container, data, options);
 
+    this.network.on('selectNode', this.handleSelectNode);
     this.network.on('deselectNode', this.handleDeselectNode);
     this.network.on('doubleClick', this.handleDoubleClick);
   }
@@ -92,6 +110,7 @@ Graph.propTypes = {
   notes: PropTypes.array,
   connections: PropTypes.array,
   addNote: PropTypes.func.isRequired,
+  selectNote: PropTypes.func.isRequired,
   addConnection: PropTypes.func.isRequired
 };
 
