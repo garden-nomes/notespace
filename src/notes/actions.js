@@ -1,40 +1,19 @@
-import {
-  ADD_NOTE,
-  // DELETE_NOTE,
-  // EDIT_NOTE,
-  // ADD_CONNECTION,
-  // DELETE_CONNECTION
-} from './constants/actionTypes';
+ export const ADD_NOTE = 'ADD_NOTE';
+ export const DELETE_NOTE = 'DELETE_NOTE';
+ export const EDIT_NOTE = 'EDIT_NOTE';
 
-const initialState = {
-  notes: [
-    { id: 0, text: 'Note graph!' },
-    { id: 1, text: 'Double click' },
-    { id: 2, text: 'to create a note!' },
-    { id: 3, text: 'Click to select a note' },
-    { id: 4, text: 'and shift-click another' },
-    { id: 5, text: 'to connect them!' }
-  ],
-  connections: [
-    { from: 1, to: 0 },
-    { from: 1, to: 2 },
-    { from: 2, to: 0 },
-    { from: 3, to: 0 },
-    { from: 3, to: 4 },
-    { from: 4, to: 5 }
-  ]
-};
+ export const addNote = () => ({
+   type: ADD_NOTE,
+   note: { text: 'New note!' }
+ });
 
-export default function reducer(state = initialState, action) {
-  switch (action.type) {
-  case ADD_NOTE:
-    return Object.assign({}, state, {
-      notes: [
-        state.notes,
-        ...action.note,
-      ]
-    });
-  default:
-    return state;
-  }
-}
+ export const deleteNote = (id) => ({
+   type: ADD_NOTE,
+   id
+ });
+
+ export const editNote = (id, text) => ({
+   type: EDIT_NOTE,
+   id,
+   text
+ });

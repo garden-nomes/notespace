@@ -1,5 +1,7 @@
-const initialState = {};
+import { combineReducers } from 'redux';
 
-export default function reducer (state = initialState) {
-  return state;
-}
+import notes from '../notes';
+
+export default combineReducers({
+  notes
+});
