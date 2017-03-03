@@ -2,24 +2,50 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 
 import Panel from './panel';
-import { Graph, addNote, editNote } from '../../notes';
-import { addConnection } from '../../connections';
+import { Graph, addNote, editNote, deleteNote } from '../../notes';
+import { addConnection, deleteConnection } from '../../connections';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = { selectedNote: null };
     this.selectNote = this.selectNote.bind(this);
+    this.deleteNote = this.deleteNote.bind(this);
   }
 
   selectNote(id) {
     this.setState({ selectedNote: id });
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { notes } = nextProps;
+    const { selectedNote } = this.state;
+
+    if (notes.find(note => note.id === selectedNote) === undefined) {
+      this.setState({ selectedNote: null });
+    }
+  }
+
+  deleteNote(id) {
+    const { connections, deleteNote, deleteConnection } = this.props;
+
+    deleteNote(id);
+    connections.filter(connection =>
+      connection.from === id || connection.to === id
+    ).forEach(connection => deleteConnection(connection.id));
+  }
+
   render() {
     const { selectNote } = this;
-    const { notes, connections, addNote, editNote, addConnection } = this.props;
     const { selectedNote } = this.state;
+    const {
+      notes,
+      connections,
+      addNote,
+      editNote,
+      addConnection,
+      deleteConnection
+    } = this.props;
 
     const note = selectedNote !== null ?
       notes.find(note => note.id === selectedNote) :
@@ -40,7 +66,13 @@ class App extends Component {
     return (
       <div className="app">
         {selectedNote !== null &&
-          <Panel note={note} connected={connected} editNote={editNote} />
+          <Panel
+            note={note}
+            connected={connected}
+            editNote={editNote}
+            deleteNote={this.deleteNote}
+            deleteConnection={deleteConnection}
+          />
         }
 
         <Graph
@@ -60,7 +92,9 @@ App.propTypes = {
   connections: PropTypes.array.isRequired,
   addNote: PropTypes.func.isRequired,
   editNote: PropTypes.func.isRequired,
-  addConnection: PropTypes.func.isRequired
+  deleteNote: PropTypes.func.isRequired,
+  addConnection: PropTypes.func.isRequired,
+  deleteConnection: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -70,5 +104,11 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { addNote, addConnection, editNote }
+  {
+    addNote,
+    editNote,
+    deleteNote,
+    addConnection,
+    deleteConnection
+  }
 )(App);

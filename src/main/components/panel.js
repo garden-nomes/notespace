@@ -16,7 +16,7 @@ class Panel extends Component {
 
   render() {
     const { edit } = this.state;
-    const { note, connected, editNote } = this.props;
+    const { note, connected, editNote, deleteNote, deleteConnection } = this.props;
 
     return (
       <div id="panel" className="container">
@@ -24,12 +24,18 @@ class Panel extends Component {
           <a href="#" onClick={this.toggleEdit}>
             {edit ? 'done' : 'edit'}
           </a>
+          &nbsp;
+          <a href="#" onClick={() => deleteNote(note.id)}>delete</a>
         </div>
 
         {edit ?
           <Form note={note} editNote={editNote} />
         :
-          <Note note={note} connected={connected} />
+          <Note
+            note={note}
+            connected={connected}
+            deleteConnection={deleteConnection}
+          />
         }
       </div>
     );
@@ -39,7 +45,9 @@ class Panel extends Component {
 Panel.propTypes = {
   note: PropTypes.object.isRequired,
   connected: PropTypes.array.isRequired,
-  editNote: PropTypes.func.isRequired
+  editNote: PropTypes.func.isRequired,
+  deleteNote: PropTypes.func.isRequired,
+  deleteConnection: PropTypes.func.isRequired
 };
 
 export default Panel;

@@ -49,6 +49,19 @@ class Graph extends Component {
 
     this.nodes.update(nodes);
     this.edges.update(edges);
+
+    // update doesn't remove items
+    this.nodes.get().forEach(graphNode => {
+      if (nodes.find(node => node.id === graphNode.id) === undefined) {
+        this.nodes.remove(graphNode.id);
+      }
+    });
+
+    this.edges.get().forEach(graphEdge => {
+      if (edges.find(edge => edge.id === graphEdge.id) === undefined) {
+        this.edges.remove(graphEdge.id);
+      }
+    });
   }
 
   handleSelectNode(e) {

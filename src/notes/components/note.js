@@ -8,7 +8,9 @@ const Note = ({ note, connected }) => (
     <h5>Connected notes:</h5>
     <ul>
       {connected.map(note =>
-        <li key={note.id}>{note.text}</li>
+        <li key={note.id}>
+          {note.text}
+        </li>
       )}
     </ul>
   </div>

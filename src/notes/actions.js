@@ -8,7 +8,7 @@
  });
 
  export const deleteNote = (id) => ({
-   type: ADD_NOTE,
+   type: DELETE_NOTE,
    id
  });
 
