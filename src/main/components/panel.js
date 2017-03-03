@@ -1,11 +1,15 @@
 import React, { PropTypes, Component } from 'react';
-import { Note, Form } from '../../notes';
+import { connect } from 'react-redux';
+
+import { Note, Form, editNote, deleteNote } from '../../notes';
+import { deleteConnection } from '../../connections';
 
 class Panel extends Component {
   constructor(props) {
     super(props);
     this.state = { edit: false };
     this.toggleEdit = this.toggleEdit.bind(this);
+    this.deleteConnectionByNoteId = this.deleteConnectionByNoteId.bind(this);
   }
 
   toggleEdit() {
@@ -45,7 +49,7 @@ class Panel extends Component {
           <Note
             note={note}
             connected={connected}
-            deleteConnection={deleteConnection}
+            deleteConnectionByNoteId={this.deleteConnectionByNoteId}
           />
         }
       </div>
