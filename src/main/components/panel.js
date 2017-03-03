@@ -14,9 +14,18 @@ class Panel extends Component {
     }));
   }
 
+  deleteConnectionByNoteId(noteId) {
+    const { connections, deleteConnection } = this.props;
+    const connection = connections.find(connection =>
+      connection.from === noteId || connection.to === noteId
+    );
+
+    deleteConnection(connection.id);
+  }
+
   render() {
     const { edit } = this.state;
-    const { note, connected, editNote, deleteNote, deleteConnection } = this.props;
+    const { note, connected, editNote, deleteNote } = this.props;
 
     return (
       <div id="panel" className="container">
@@ -25,7 +34,9 @@ class Panel extends Component {
             {edit ? 'done' : 'edit'}
           </a>
           &nbsp;
-          <a href="#" onClick={() => deleteNote(note.id)}>delete</a>
+          <a className="small" href="#" onClick={() => deleteNote(note.id)}>
+            delete
+          </a>
         </div>
 
         {edit ?
@@ -45,9 +56,44 @@ class Panel extends Component {
 Panel.propTypes = {
   note: PropTypes.object.isRequired,
   connected: PropTypes.array.isRequired,
+  connections: PropTypes.array.isRequired,
   editNote: PropTypes.func.isRequired,
   deleteNote: PropTypes.func.isRequired,
   deleteConnection: PropTypes.func.isRequired
 };
 
-export default Panel;
+const mapStateToProps = (state) => ({
+  notes: state.notes,
+  connections: state.connections
+});
+
+const mapDispatchToProps = {
+  editNote,
+  deleteNote,
+  deleteConnection
+};
+
+const mergeProps = (stateProps, dispatchProps, ownProps) => ({
+  note: stateProps.notes.find(note => note.id === ownProps.noteId),
+  connections: stateProps.connections.filter(connection =>
+    connection.from === ownProps.noteId || connection.to === ownProps.noteId
+  ),
+  connected: stateProps.connections.map(connection => {
+    if (connection.from === ownProps.noteId) {
+      return stateProps.notes.find(note => note.id === connection.to);
+    } else if (connection.to === ownProps.noteId) {
+      return stateProps.notes.find(note => note.id === connection.from);
+    } else {
+      return null;
+    }
+  }).filter(connection =>
+    connection !== null
+  ),
+  ...dispatchProps
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+  mergeProps
+)(Panel);

@@ -1,4 +1,3 @@
-export { default as Graph } from './components/graph';
 export { default as Note } from './components/note';
 export { default as Form } from './components/form';
 export * from './actions';
