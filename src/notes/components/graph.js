@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PropTypes, Component } from 'react';
 import { DataSet, Network } from 'vis';
 import uuid from 'uuid';
 
@@ -57,17 +57,9 @@ class Graph extends Component {
   }
 
   initData () {
-    const nodes = [
-      { 'id': 0, 'label': 'test' },
-      { 'id': 1, 'label': 'graph' },
-      { 'id': 2, 'label': 'works' }
-    ];
-
-    const edges = [
-      { 'from': 0, 'to': 1 },
-      { 'from': 1, 'to': 2 },
-      { 'from': 2, 'to': 0 }
-    ];
+    const { notes, connections } = this.props;
+    const nodes = notes.map(note => ({ id: note.id, label: note.text }));
+    const edges = connections;
 
     this.nodes = new DataSet(nodes);
     this.edges = new DataSet(edges);
@@ -89,5 +81,10 @@ class Graph extends Component {
     return <div id={this.identifier} />;
   }
 }
+
+Graph.propTypes = {
+  notes: PropTypes.array,
+  connections: PropTypes.array
+};
 
 export default Graph;
