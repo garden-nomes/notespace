@@ -5,7 +5,7 @@ import {
 } from './actions';
 
 const initialState = [
-  { id: 0, text: 'Note graph!' },
+  { id: 0, text: 'NoteSpace!' },
   { id: 1, text: 'Double click' },
   { id: 2, text: 'to create a note!' },
   { id: 3, text: 'Click to select a note' },

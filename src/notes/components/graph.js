@@ -1,6 +1,5 @@
 import React, { PropTypes, Component } from 'react';
 import { DataSet, Network } from 'vis';
-import uuid from 'uuid';
 
 const OPTIONS = {
   nodes: {
@@ -21,7 +20,7 @@ const OPTIONS = {
 };
 
 class Graph extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.identifier = 'note-graph';
 
@@ -31,34 +30,36 @@ class Graph extends Component {
     this.handleDoubleClick = this.handleDoubleClick.bind(this);
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.initData();
     this.initGraph();
   }
 
-  handleDeselectNode (e) {
+  componentDidUpdate() {
+    const { notes, connections } = this.props;
+    const nodes = notes.map(note => ({ id: note.id, label: note.text }));
+    const edges = connections;
+
+    this.nodes.update(nodes);
+    this.edges.update(edges);
+  }
+
+  handleDeselectNode(e) {
     if (e.event.srcEvent.shiftKey &&
         e.previousSelection.nodes.length > 0 &&
         e.nodes.length > 0) {
-      const nodeId = e.nodes[0];
-      const selectedId = e.previousSelection.nodes[0];
-      this.edges.add({ from: nodeId, to: selectedId });
 
-      // prevent graph from selecting new node
-      this.network.selectNodes([selectedId]);
+      const { addConnection } = this.props;
+      const fromId = e.nodes[0];
+      const toId = e.previousSelection.nodes[0];
+      addConnection(fromId, toId);
+      this.network.selectNodes([toId]);
     }
   }
 
-  handleDoubleClick (event) {
-    let { x, y } = event.pointer.canvas;
-
-    const id = uuid.v4();
-    this.nodes.add({
-      id, x, y,
-      label: 'new!'
-    });
-
-    this.network.selectNodes([id]);
+  handleDoubleClick() {
+    const { addNote } = this.props;
+    addNote();
   }
 
   initData () {
@@ -70,7 +71,7 @@ class Graph extends Component {
     this.edges = new DataSet(edges);
   }
 
-  initGraph () {
+  initGraph() {
     let { nodes, edges } = this;
 
     const container = document.getElementById(this.identifier);
@@ -82,14 +83,16 @@ class Graph extends Component {
     this.network.on('doubleClick', this.handleDoubleClick);
   }
 
-  render () {
+  render() {
     return <div id={this.identifier} />;
   }
 }
 
 Graph.propTypes = {
   notes: PropTypes.array,
-  connections: PropTypes.array
+  connections: PropTypes.array,
+  addNote: PropTypes.func.isRequired,
+  addConnection: PropTypes.func.isRequired
 };
 
 export default Graph;
