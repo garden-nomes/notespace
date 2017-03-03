@@ -29,18 +29,22 @@ class Panel extends Component {
 
   render() {
     const { edit } = this.state;
-    const { note, connected, editNote, deleteNote } = this.props;
+    const { note, connected, editNote, deleteNote, selectNote } = this.props;
 
     return (
       <div id="panel" className="container">
-        <div>
-          <a href="#" onClick={this.toggleEdit}>
+        <div className="btn-group btn-group-sm options">
+          <button
+            className="btn btn-primary"
+            onClick={this.toggleEdit}>
             {edit ? 'done' : 'edit'}
-          </a>
-          &nbsp;
-          <a className="small" href="#" onClick={() => deleteNote(note.id)}>
+          </button>
+
+          <button
+            className="btn btn-secondary"
+            onClick={() => deleteNote(note.id)}>
             delete
-          </a>
+          </button>
         </div>
 
         {edit ?

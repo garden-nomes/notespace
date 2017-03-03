@@ -6,25 +6,29 @@ import { addNote } from '../../notes';
 import { addConnection, deleteConnection } from '../../connections';
 
 const COLORS = {
-  background: '#696D7D',
-  main: '#81C3D7',
-  highlight: '#D9DCD6'
+  background: '#F2F5EA',
+  main: '#2C363F',
+  highlight: '#2C363F'
 };
 
 const OPTIONS = {
   nodes: {
-    borderWidth: 0,
-    borderWidthSelected: 0,
+    borderWidth: 1,
+    borderWidthSelected: 2,
     color: {
-      background: COLORS.main,
-      highlight: { background: COLORS.highlight }
+      border: COLORS.main,
+      background: COLORS.background,
+      highlight: {
+        border: COLORS.main,
+        background: COLORS.background
+      }
     },
-    font: { color: COLORS.background }
+    font: { color: COLORS.main }
   },
   edges: {
     color: {
       color: COLORS.main,
-      highlight: COLORS.highlight
+      highlight: COLORS.main
     }
   }
 };

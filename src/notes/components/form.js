@@ -20,7 +20,7 @@ class Form extends Component {
 
     return (
       <textarea
-        className="note-textarea form-control"
+        className="form-control"
         value={text}
         onChange={this.handleChange}
       />
