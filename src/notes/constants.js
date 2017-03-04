@@ -1,6 +1,6 @@
-export const WELCOME = `# Welcome to NoteSpace! (click me)
+export const WELCOME = `# Welcome to notespace (click me)
 
-There are a lot of note taking apps on the internet, this one is a little different in that your notes form a graph (like a [mind map](https://en.wikipedia.org/wiki/Mind_map)).`;
+There are a lot of note taking apps around, this one is a little different in that your notes form a graph (like a [mind map](https://en.wikipedia.org/wiki/Mind_map)).`;
 
 export const INSTRUCTIONS = `# Instructions
 
