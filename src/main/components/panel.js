@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 import { Note, Form, editNote, deleteNote } from '../../notes';
 import { deleteConnection } from '../../connections';
 
-import Toolbar from './toolbar';
+import Toolbar from './toolbar/';
 
 class Panel extends Component {
   constructor(props) {
     super(props);
     const { note } = props;
-    this.state = { editing: note.new };
+    this.state = { editing: !!note.new };
     this.toggleEdit = this.toggleEdit.bind(this);
     this.deleteConnectionByNoteId = this.deleteConnectionByNoteId.bind(this);
   }
