@@ -1,8 +1,7 @@
 import React, { PropTypes } from 'react';
 
 import CloseButton from './close-button';
-import EditButton from './edit-button';
-import DoneButton from './done-button';
+import EditToggle from './edit-toggle';
 import DeleteButton from './delete-button';
 
 const Toolbar = ({ editing, onClose, onToggleEdit, onDelete }) => (
@@ -11,11 +10,7 @@ const Toolbar = ({ editing, onClose, onToggleEdit, onDelete }) => (
       <CloseButton onClick={onClose} />
     </div>
     <div className="toolbar-middle col-sm-4">
-      {editing ?
-        <DoneButton onClick={onToggleEdit} />
-      :
-        <EditButton onClick={onToggleEdit} />
-      }
+      <EditToggle editing={editing} onToggleEdit={onToggleEdit} />
     </div>
     <div className="toolbar-right col-sm-4">
       <DeleteButton onClick={onDelete} />
