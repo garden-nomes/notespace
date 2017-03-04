@@ -55,7 +55,19 @@ class Graph extends Component {
   }
 
   componentDidUpdate() {
-    const { selectedNote, nodes, edges, deleteConnection } = this.props;
+    const { selectNote, selectedNote, nodes, edges, deleteConnection } = this.props;
+
+    nodes.forEach(node => {
+      if (this.nodes.get(node.id) === null) {
+        this.nodes.add({
+          x: this.lastClick ? this.lastClick.x : 0,
+          y: this.lastClick ? this.lastClick.y : 0,
+          ...node
+        });
+
+        selectNote(node.id);
+      }
+    });
 
     this.nodes.update(nodes);
     this.edges.update(edges);
@@ -110,8 +122,10 @@ class Graph extends Component {
     }
   }
 
-  handleDoubleClick() {
+  handleDoubleClick(e) {
     const { addNote } = this.props;
+
+    this.lastClick = e.pointer.canvas;
     addNote();
   }
 
