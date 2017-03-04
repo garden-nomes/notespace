@@ -7,7 +7,8 @@ import { deleteConnection } from '../../connections';
 class Panel extends Component {
   constructor(props) {
     super(props);
-    this.state = { edit: false };
+    const { note } = props;
+    this.state = { edit: note.new };
     this.toggleEdit = this.toggleEdit.bind(this);
     this.deleteConnectionByNoteId = this.deleteConnectionByNoteId.bind(this);
   }

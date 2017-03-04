@@ -3,7 +3,11 @@ import React, { PropTypes, Component } from 'react';
 class Form extends Component {
   constructor(props) {
     super(props);
-    this.state = { text: props.note.text };
+    const { note } = props;
+
+    this.state = {
+      text: note.new ? '' : note.text
+    };
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -20,6 +24,8 @@ class Form extends Component {
 
     return (
       <textarea
+        autoFocus
+        placeholder="Write your note here..."
         className="form-control"
         value={text}
         onChange={this.handleChange}

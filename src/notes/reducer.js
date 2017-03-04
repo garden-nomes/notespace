@@ -22,7 +22,8 @@ export default function reducer(state = initialState, action) {
     return [
       {
         id: state.reduce((maxId, note) => Math.max(note.id, maxId), -1) + 1,
-        text: 'New note!'
+        text: 'New note...',
+        new: true
       },
       ...state,
     ];
@@ -30,7 +31,13 @@ export default function reducer(state = initialState, action) {
     return state.filter(note => note.id !== action.id);
   case EDIT_NOTE:
     return state.map(note =>
-      note.id === action.id ? { ...note, text: action.text } : note
+      note.id === action.id ?
+        { ...note,
+          text: action.text,
+          new: false
+        }
+      :
+        note
     );
   default:
     return state;

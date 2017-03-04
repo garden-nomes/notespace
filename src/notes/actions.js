@@ -3,8 +3,7 @@
  export const EDIT_NOTE = 'EDIT_NOTE';
 
  export const addNote = () => ({
-   type: ADD_NOTE,
-   note: { text: 'New note!' }
+   type: ADD_NOTE
  });
 
  export const deleteNote = (id) => ({
