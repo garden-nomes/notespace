@@ -4,9 +4,10 @@ There are a lot of note taking apps around, this one is a little different in th
 
 export const INSTRUCTIONS = `# Instructions
 
-* **Double-click** on the graph to create a node.
-* **Click** a node to select it.
-* **Shift-click** another node to create a connection.
+* **double-click** on the graph to create a node
+* **click** a node to select it
+* **shift + space** while a note is selected to toggle edit mode
+* **shift + click** another node to create a connection
 
 Try it now!`;
 
