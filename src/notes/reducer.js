@@ -7,13 +7,15 @@ import {
 import {
   WELCOME,
   INSTRUCTIONS,
-  MARKDOWN
+  MARKDOWN,
+  ABOUT
 } from './constants';
 
 const initialState = [
   { id: 0, text: WELCOME },
   { id: 1, text: INSTRUCTIONS },
   { id: 2, text: MARKDOWN },
+  { id: 3, text: ABOUT }
 ];
 
 export default function reducer(state = initialState, action) {
@@ -36,8 +38,7 @@ export default function reducer(state = initialState, action) {
           text: action.text,
           new: false
         }
-      :
-        note
+      : note
     );
   default:
     return state;

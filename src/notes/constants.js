@@ -26,9 +26,9 @@ Examples:
 ### subsubtitle
 ***
 \`\`\`
-plain old paragraph text, *bold*, _italic_
+plain old paragraph text, **bold**, *italic*
 \`\`\`
-plain old paragraph text, *bold*, _italic_
+plain old paragraph text, **bold**, *italic*
 ***
 \`\`\`
 * list item 1
@@ -46,3 +46,8 @@ plain old paragraph text, *bold*, _italic_
 ![image](http://fillmurray.com/150/150)
 \`\`\`
 ![image](http://fillmurray.com/150/150)`;
+
+export const ABOUT = `# About
+
+Created by [noaner](https://github.com/noaner) with React and [vis.js](http://visjs.org/).
+[View source](https://github.com/noaner/notespace)`;

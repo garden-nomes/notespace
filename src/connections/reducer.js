@@ -6,6 +6,8 @@ import {
 const initialState = [
   { id: 0, from: 0, to: 1 },
   { id: 1, from: 0, to: 2 },
+  { id: 2, from: 1, to: 2 },
+  { id: 3, from: 0, to: 3 },
 ];
 
 export default function reducer(state = initialState, action) {
