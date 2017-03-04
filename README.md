@@ -9,7 +9,7 @@ a pretty neat little app 😉.
 Uses React, Redux, Bootstrap 4, and [vis.js](http://visjs.org/) for graph
 rendering.
 
-## local server
+## run it locally
 
 ```bash
 git clone https://github.com/noaner/notespace
