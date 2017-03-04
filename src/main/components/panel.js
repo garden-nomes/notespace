@@ -34,18 +34,22 @@ class Panel extends Component {
 
     return (
       <div id="panel" className="container">
-        <div className="btn-group btn-group-sm options">
-          <button
-            className="btn btn-primary"
-            onClick={this.toggleEdit}>
-            {edit ? 'done' : 'edit'}
-          </button>
-
-          <button
-            className="btn btn-secondary"
-            onClick={() => deleteNote(note.id)}>
-            delete
-          </button>
+        <div className="options">
+          <div className="btn-group btn-group-sm">
+            <button
+              className="btn btn-outline-primary"
+              onClick={this.toggleEdit}>
+              {edit ?
+                <span>done <i className="fa fa-check"></i></span>
+              :
+                <span>edit <i className="fa fa-pencil"></i></span>
+              }
+            </button>
+            <button
+              className="btn btn-outline-danger" onClick={() => deleteNote(note.id)}>
+              <i className="fa fa-trash"></i>
+            </button>
+          </div>
         </div>
 
         {edit ?

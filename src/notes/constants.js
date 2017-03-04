@@ -4,9 +4,9 @@ There are a lot of note taking apps on the internet, this one is a little differ
 
 export const INSTRUCTIONS = `# Instructions
 
-* *Double-click* on the graph to create a node.
-* *Click* a node to select it.
-* *Shift-click* another node to create a connection.
+* **Double-click** on the graph to create a node.
+* **Click** a node to select it.
+* **Shift-click** another node to create a connection.
 
 Try it now!`;
 
@@ -50,4 +50,5 @@ plain old paragraph text, **bold**, *italic*
 export const ABOUT = `# About
 
 Created by [noaner](https://github.com/noaner) with React and [vis.js](http://visjs.org/).
-[View source](https://github.com/noaner/notespace)`;
+
+[view source](https://github.com/noaner/notespace)`;
