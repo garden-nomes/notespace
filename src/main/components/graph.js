@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { DataSet, Network } from 'vis';
 
-import { addNote } from '../../notes';
+import { addNote, formatTitle } from '../../notes';
 import { addConnection, deleteConnection } from '../../connections';
 
 const COLORS = {
@@ -15,6 +15,9 @@ const OPTIONS = {
   nodes: {
     borderWidth: 1,
     borderWidthSelected: 2,
+    widthConstraint: {
+      maximum: 150
+    },
     color: {
       border: COLORS.main,
       background: COLORS.background,
@@ -29,7 +32,8 @@ const OPTIONS = {
     color: {
       color: COLORS.main,
       highlight: COLORS.main
-    }
+    },
+    length: 200
   }
 };
 
@@ -142,14 +146,14 @@ Graph.propTypes = {
   addNote: PropTypes.func.isRequired,
   addConnection: PropTypes.func.isRequired,
   deleteConnection: PropTypes.func.isRequired,
-  selectedNote: PropTypes.number.isRequired,
+  selectedNote: PropTypes.number,
   selectNote: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
   nodes: state.notes.map(note => ({
     id: note.id,
-    label: note.text
+    label: formatTitle(note)
   })),
   edges: state.connections
 });

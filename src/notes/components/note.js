@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
 import ReactMarkdown from 'react-markdown';
 
+import { formatTitle } from '../model';
+
 const Note = ({ note, connected, deleteConnectionByNoteId, selectNote }) => (
   <div className="note">
     <ReactMarkdown source={note.text} />
@@ -11,7 +13,7 @@ const Note = ({ note, connected, deleteConnectionByNoteId, selectNote }) => (
       {connected.map(note =>
         <li key={note.id}>
           <a href="#" onClick={() => selectNote(note.id)}>
-            {note.text}
+            {formatTitle(note)}
           </a>
 
           &nbsp;
@@ -31,8 +33,8 @@ const Note = ({ note, connected, deleteConnectionByNoteId, selectNote }) => (
 Note.propTypes = {
   note: PropTypes.object.isRequired,
   connected: PropTypes.array.isRequired,
-  deleteConnectionByNoteId: PropTypes.array.isRequired,
-  selectNote: PropTypes.array.isRequired
+  deleteConnectionByNoteId: PropTypes.func.isRequired,
+  selectNote: PropTypes.func.isRequired
 };
 
 export default Note;

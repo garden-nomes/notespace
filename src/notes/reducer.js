@@ -4,13 +4,16 @@ import {
   EDIT_NOTE,
 } from './actions';
 
+import {
+  WELCOME,
+  INSTRUCTIONS,
+  MARKDOWN
+} from './constants';
+
 const initialState = [
-  { id: 0, text: 'NoteSpace!' },
-  { id: 1, text: 'Double click' },
-  { id: 2, text: 'to create a note!' },
-  { id: 3, text: 'Click to select a note' },
-  { id: 4, text: 'and shift-click another' },
-  { id: 5, text: 'to connect them!' }
+  { id: 0, text: WELCOME },
+  { id: 1, text: INSTRUCTIONS },
+  { id: 2, text: MARKDOWN },
 ];
 
 export default function reducer(state = initialState, action) {
