@@ -4,18 +4,20 @@ import { connect } from 'react-redux';
 import { Note, Form, editNote, deleteNote } from '../../notes';
 import { deleteConnection } from '../../connections';
 
+import Toolbar from './toolbar';
+
 class Panel extends Component {
   constructor(props) {
     super(props);
     const { note } = props;
-    this.state = { edit: note.new };
+    this.state = { editing: note.new };
     this.toggleEdit = this.toggleEdit.bind(this);
     this.deleteConnectionByNoteId = this.deleteConnectionByNoteId.bind(this);
   }
 
   toggleEdit() {
     this.setState(prevState => ({
-      edit: !prevState.edit
+      editing: !prevState.editing
     }));
   }
 
@@ -29,30 +31,19 @@ class Panel extends Component {
   }
 
   render() {
-    const { edit } = this.state;
+    const { editing } = this.state;
     const { note, connected, editNote, deleteNote, selectNote } = this.props;
 
     return (
       <div id="panel" className="container">
-        <div className="options">
-          <div className="btn-group btn-group-sm">
-            <button
-              className="btn btn-outline-primary"
-              onClick={this.toggleEdit}>
-              {edit ?
-                <span>done <i className="fa fa-check"></i></span>
-              :
-                <span>edit <i className="fa fa-pencil"></i></span>
-              }
-            </button>
-            <button
-              className="btn btn-outline-danger" onClick={() => deleteNote(note.id)}>
-              <i className="fa fa-trash"></i>
-            </button>
-          </div>
-        </div>
+        <Toolbar
+          editing={editing}
+          onClose={() => selectNote(null)}
+          onToggleEdit={this.toggleEdit}
+          onDelete={() => deleteNote(note.id)}
+        />
 
-        {edit ?
+        {editing ?
           <Form note={note} editNote={editNote} />
         :
           <Note

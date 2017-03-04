@@ -26,7 +26,6 @@ class Form extends Component {
       <textarea
         autoFocus
         placeholder="Write your note here..."
-        className="form-control"
         value={text}
         onChange={this.handleChange}
       />
