@@ -1,5 +1,11 @@
 {
-  "name": "notespace-app",
+  "name": "notespace",
+  "homepage": "https://noaner.github.io/notespace",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/noaner/notespace.git"
+  },
+  "licence": "MIT",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
@@ -25,6 +31,8 @@
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm-run-all build-css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   }
 }
