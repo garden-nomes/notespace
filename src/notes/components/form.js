@@ -23,12 +23,22 @@ class Form extends Component {
     const { text } = this.state;
 
     return (
-      <textarea
-        autoFocus
-        placeholder="Write your note here..."
-        value={text}
-        onChange={this.handleChange}
-      />
+      <div className="note-form">
+        <textarea
+          style={{ height: window.innerHeight - 107 }}
+          autoFocus
+          placeholder="Write your note here..."
+          value={text}
+          onChange={this.handleChange}
+        />
+
+        <div className="small text-muted">
+          <a href="https://daringfireball.net/projects/markdown/syntax" target="_blank">
+            MarkDown
+          </a>
+          &nbsp;formatting supported
+        </div>
+      </div>
     );
   }
 }

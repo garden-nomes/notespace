@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import ReactMarkdown from 'react-markdown';
 
-import { formatTitle } from '../model';
+import ConnectedNote from './connected-note';
 
 const Note = ({ note, connected, deleteConnectionByNoteId, selectNote }) => (
   <div className="note">
@@ -11,20 +11,12 @@ const Note = ({ note, connected, deleteConnectionByNoteId, selectNote }) => (
     <h6>Connected notes:</h6>
     <ul>
       {connected.map(note =>
-        <li key={note.id}>
-          <a href="#" onClick={() => selectNote(note.id)}>
-            {formatTitle(note)}
-          </a>
-
-          &nbsp;
-
-          <a
-            className="small"
-            href="#"
-            onClick={() => deleteConnectionByNoteId(note.id)}>
-            delete
-          </a>
-        </li>
+        <ConnectedNote
+          key={note.id}
+          note={note}
+          onSelect={() => selectNote(note.id)}
+          onDelete={() => deleteConnectionByNoteId(note.id)}
+        />
       )}
     </ul>
   </div>

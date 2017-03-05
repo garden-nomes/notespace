@@ -2,15 +2,6 @@ export const WELCOME = `# Welcome to notespace (click me)
 
 There are a lot of note taking apps around, this one is a little different in that your notes form a graph (like a [mind map](https://en.wikipedia.org/wiki/Mind_map)).`;
 
-export const INSTRUCTIONS = `# Instructions
-
-* **double-click** on the graph to create a node
-* **click** a node to select it
-* **shift + space** while a note is selected to toggle edit mode
-* **shift + click** another node to create a connection
-
-Try it now!`;
-
 export const MARKDOWN = `# MarkDown formatting
 
 You can format notes using [MarkDown](https://daringfireball.net/projects/markdown/syntax).

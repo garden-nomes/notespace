@@ -6,9 +6,8 @@ import { addNote, formatTitle } from '../../notes';
 import { addConnection, deleteConnection } from '../../connections';
 
 const COLORS = {
-  background: '#fdfdfd',
-  main: '#2C363F',
-  highlight: '#2C363F'
+  background: '#fff',
+  main: '#292b2c'
 };
 
 const OPTIONS = {
