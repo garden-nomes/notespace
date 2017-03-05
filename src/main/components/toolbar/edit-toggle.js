@@ -10,11 +10,11 @@ class EditToggle extends Component {
   }
 
   componentWillMount() {
-    document.addEventListener('keypress', this.onKeyDown);
+    document.addEventListener('keydown', this.onKeyDown);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keypress', this.onKeyDown);
+    document.removeEventListener('keydown', this.onKeyDown);
   }
 
   onKeyDown(e) {

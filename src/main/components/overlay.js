@@ -26,7 +26,7 @@ class Overlay extends Component {
 
         <ul className="links">
           <li>
-            <a href="#" onClick={this.toggleActive}>
+            <a href="#" className="font-weight-bold" onClick={this.toggleActive}>
               {active ? 'close help' : 'show help'}
             </a>
           </li>
