@@ -34,13 +34,19 @@ class Panel extends Component {
     const { editing } = this.state;
     const { note, connected, editNote, deleteNote, selectNote } = this.props;
 
+    const confirmDelete = () => (
+      window.confirm('Are you sure you want do delete this note?') ?
+      deleteNote(note.id) :
+      null
+    );
+
     return (
       <div id="panel" className="container">
         <Toolbar
           editing={editing}
           onClose={() => selectNote(null)}
           onToggleEdit={this.toggleEdit}
-          onDelete={() => deleteNote(note.id)}
+          onDelete={() => confirmDelete()}
         />
 
         {editing ?
