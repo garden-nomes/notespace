@@ -5,6 +5,39 @@ body
 #root
   position: relative
 
+.overlay
+  opacity: .75
+  width: 400px
+  position: fixed
+  bottom: 0
+  padding: 8px
+  margin: 8px
+  kbd
+    background: #888
+  a
+    font-size: .75rem
+    color: inherit
+    text-decoration: none
+  a:hover
+    text-decoration: underline
+  ul.help-text
+    padding-left: 0
+    list-style: none
+    li
+      padding-bottom: .25rem
+  ul.links
+    padding-left: 0
+    margin-bottom: 0
+    list-style: none
+    li
+      display: inline
+      margin-right: 15px
+
+.overlay.active
+  background: #333
+  border-radius: .25rem
+  color: #fff
+
 #panel
   position: absolute
   right: 0

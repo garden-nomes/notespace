@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import Overlay from './overlay';
 import Panel from './panel';
 import Graph from './graph';
 
@@ -32,6 +33,7 @@ class App extends Component {
 
     return (
       <div className="app">
+        <Overlay />
         {selectedNote !== null &&
           <Panel selectNote={selectNote} noteId={selectedNote} />
         }
