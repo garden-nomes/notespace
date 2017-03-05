@@ -73,8 +73,6 @@ class Graph extends Component {
 
     if (selectedNote !== null) {
       this.network.selectNodes([selectedNote]);
-    } else {
-      this.network.unselectAll();
     }
 
     // update doesn't remove items
