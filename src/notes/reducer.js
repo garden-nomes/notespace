@@ -4,18 +4,10 @@ import {
   EDIT_NOTE,
 } from './actions';
 
-import {
-  WELCOME,
-  INSTRUCTIONS,
-  MARKDOWN,
-  ABOUT
-} from './constants';
+import { WELCOME } from './constants';
 
 const initialState = [
-  { id: 0, text: WELCOME },
-  { id: 1, text: INSTRUCTIONS },
-  { id: 2, text: MARKDOWN },
-  { id: 3, text: ABOUT }
+  { id: 0, text: WELCOME }
 ];
 
 export default function reducer(state = initialState, action) {

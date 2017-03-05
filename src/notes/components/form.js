@@ -33,7 +33,7 @@ class Form extends Component {
         />
 
         <div className="small text-muted">
-          <a href="https://daringfireball.net/projects/markdown/syntax" target="_blank">
+          <a href="http://commonmark.org/help/" target="_blank">
             MarkDown
           </a>
           &nbsp;formatting supported
