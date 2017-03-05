@@ -1,3 +1,29 @@
+$white:  #fff !default
+$black:  #000 !default
+$red:    #d9534f !default
+$orange: #f0ad4e !default
+$yellow: #ffd500 !default
+$green:  #5cb85c !default
+$blue:   #0275d8 !default
+$teal:   #5bc0de !default
+$pink:   #ff5b77 !default
+$purple: #613d7c !default
+
+$gray-dark:                 #292b2c !default
+$gray:                      #464a4c !default
+$gray-light:                #636c72 !default
+$gray-lighter:              #eceeef !default
+$gray-lightest:             #f7f7f9 !default
+
+$brand-primary:             $blue !default
+$brand-success:             $green !default
+$brand-info:                $teal !default
+$brand-warning:             $orange !default
+$brand-danger:              $red !default
+$brand-inverse:             $gray-dark !default
+
+$graph-background: #F2F5EA
+
 body
   margin: 0
   padding: 0
@@ -13,7 +39,8 @@ body
   padding: 8px
   margin: 8px
   kbd
-    background: #888
+    background: $gray-light
+    color: $white
   a
     font-size: .75rem
     color: inherit
@@ -34,9 +61,9 @@ body
       margin-right: 15px
 
 .overlay.active
-  background: #333
+  background: $gray-dark
   border-radius: .25rem
-  color: #fff
+  color: $graph-background
 
 #panel
   position: absolute
@@ -58,7 +85,7 @@ body
   z-index: -1
   width: 100vw
   height: 100vh
-  background: #F2F5EA
+  background: $graph-background
 
 .toolbar
   padding-bottom: 15px
@@ -75,5 +102,5 @@ body
 pre
   padding: .2rem .4rem
   font-size: 90%
-  background-color: #f7f7f9
+  background-color: $gray-lightest
   border-radius: .25rem
