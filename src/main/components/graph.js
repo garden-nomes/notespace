@@ -6,8 +6,8 @@ import { addNote, formatTitle } from '../../notes';
 import { addConnection, deleteConnection } from '../../connections';
 
 const COLORS = {
-  background: '#fff',
-  main: '#292b2c'
+  background: '#002b36',
+  main: '#93a1a1'
 };
 
 const OPTIONS = {
@@ -25,7 +25,10 @@ const OPTIONS = {
         background: COLORS.background
       }
     },
-    font: { color: COLORS.main }
+    font: {
+      color: COLORS.main,
+      face: 'Bitter'
+    }
   },
   edges: {
     color: {

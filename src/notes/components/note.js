@@ -5,7 +5,7 @@ import ConnectedNote from './connected-note';
 
 const Note = ({ note, connected, deleteConnectionByNoteId, selectNote }) => (
   <div className="note">
-    <ReactMarkdown source={note.text} />
+    <ReactMarkdown className="note-text" source={note.text} />
 
     <hr />
     <h6>Connected notes:</h6>

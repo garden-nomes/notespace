@@ -1,28 +1,32 @@
-$white:  #fff !default
-$black:  #000 !default
-$red:    #d9534f !default
-$orange: #f0ad4e !default
-$yellow: #ffd500 !default
-$green:  #5cb85c !default
-$blue:   #0275d8 !default
-$teal:   #5bc0de !default
-$pink:   #ff5b77 !default
-$purple: #613d7c !default
+@import './solarized.sass'
+@import '../../../node_modules/bootstrap/scss/_variables.scss'
+$fa-font-path: '../../../node_modules/font-awesome/fonts'
 
-$gray-dark:                 #292b2c !default
-$gray:                      #464a4c !default
-$gray-light:                #636c72 !default
-$gray-lighter:              #eceeef !default
-$gray-lightest:             #f7f7f9 !default
+@import url('https://fonts.googleapis.com/css?family=Bitter:400,400i,700|Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i');
+$font-family-serif:      'Bitter', $font-family-serif
+$font-family-sans-serif: 'Source Sans Pro', $font-family-sans-serif
+$font-family-base: $font-family-sans-serif
 
-$brand-primary:             $blue !default
-$brand-success:             $green !default
-$brand-info:                $teal !default
-$brand-warning:             $orange !default
-$brand-danger:              $red !default
-$brand-inverse:             $gray-dark !default
+// modify bootstrap to use solarized colors
+$gray-darker:           $base03
+$gray-dark:             $base02
+$gray:                  $base01
+$gray-light:            $base00
+$gray-lighter:          $base2
 
-$graph-background: #fff
+$body-bg: $base3
+$text-color: $base01
+
+$brand-primary:         $violet
+$brand-success:         $green
+$brand-info:            $cyan
+$brand-warning:         $orange
+$brand-danger:          $red
+
+$graph-background: $base03
+
+@import '../../../node_modules/bootstrap/scss/bootstrap.scss'
+@import '../../../node_modules/font-awesome/scss/font-awesome.scss'
 
 body
   margin: 0
@@ -32,17 +36,17 @@ body
   position: relative
 
 .overlay
-  opacity: .75
+  color: $base00
   width: 400px
   position: fixed
   bottom: 0
   padding: 8px
   margin: 8px
   kbd
-    background: $gray-light
-    color: $white
+    background: $base1
+    color: $base03
   a
-    font-size: .75rem
+    font-size: .8rem
     color: inherit
     text-decoration: none
   a:hover
@@ -60,27 +64,27 @@ body
       display: inline
       margin-right: 15px
 
-.overlay.active
-  background: $black
-  border-radius: .25rem
-  color: $graph-background
-
 #panel
   position: absolute
   right: 0
   width: 40vw
   height: 100vh
   padding-top: 15px
-  background: #fff
+  background: $body-bg
   overflow-y: scroll
-  box-shadow: 8px 0 16px
+  box-shadow: 8px 0 16px #000
+  .note-text
+    font-family: $font-family-serif
   .note-form
     textarea
+      font-family: $font-family-serif
+      color: inherit
       resize: none
       padding: 0
       border: none
       outline: none
       width: 100%
+      background: $body-bg
   .connected-note a
     color: inherit
   img
@@ -109,5 +113,6 @@ body
 pre
   padding: .2rem .4rem
   font-size: 90%
-  background-color: $gray-lightest
+  background-color: $base03
+  color: $base1
   border-radius: .25rem
