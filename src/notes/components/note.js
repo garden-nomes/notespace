@@ -1,11 +1,16 @@
 import React, { PropTypes } from 'react';
-import ReactMarkdown from 'react-markdown';
+import Markdown from 'react-markdown';
 
 import ConnectedNote from './connected-note';
+import CodeBlock from '../../main/components/code-block';
 
 const Note = ({ note, connected, deleteConnectionByNoteId, selectNote }) => (
   <div className="note">
-    <ReactMarkdown className="note-text" source={note.text} />
+    <Markdown className="note-text" source={note.text}
+      renderers={Object.assign({}, Markdown.renderers, {
+        CodeBlock: CodeBlock
+      })}
+    />
 
     <hr />
     <h6>Connected notes:</h6>
