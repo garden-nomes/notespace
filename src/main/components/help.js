@@ -1,14 +1,20 @@
 import React from 'react';
 
 const Help = () => (
-  <ul className="help-text">
-    <li><kbd>click</kbd> a note to select it</li>
-    <li><kbd>escape</kbd> to deselect a note</li>
-    <li><kbd>shift+click</kbd> another note to connect them</li>
-    <li><kbd>double click</kbd> on the graph to create a new note</li>
-    <li><kbd>shift+space</kbd> to toggle edit mode</li>
-    <li><kbd>esc</kbd> to toggle edit mode</li>
-  </ul>
+  <div>
+    <h5>The Graph</h5>
+    <ul className="help-text">
+      <li><strong>click</strong> a note to select it</li>
+      <li><strong>⇧ + click</strong> another note to connect them</li>
+      <li><strong>double click</strong> on the graph to create a new note</li>
+    </ul>
+    <h5>Keyboard Shortcuts</h5>
+    <ul className="help-text">
+      <li><strong>esc</strong> to deselect a note</li>
+      <li><strong>⇧ + ⌫</strong> to delete current note</li>
+      <li><strong>⇧ + space</strong> to toggle edit mode</li>
+    </ul>
+  </div>
 );
 
 export default Help;
