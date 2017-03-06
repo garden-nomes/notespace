@@ -34,14 +34,8 @@ const OPTIONS = {
     color: {
       color: COLORS.main,
       highlight: COLORS.main
-    }
-  },
-  physics: {
-    barnesHut: {
-      springLength: 250,
-      centralGravity: 0.2,
-      avoidOverlap: 0.5
-    }
+    },
+    length: 200
   }
 };
 
