@@ -27,15 +27,16 @@ class Overlay extends Component {
         <ul className="links">
           <li>
             <a href="#" className="font-weight-bold" onClick={this.toggleActive}>
-              <i className="fa fa-question-circle"></i>
-              &nbsp;{active ? 'close' : 'show'}
-              &nbsp;help
+              <i className={`fa fa-${active ? 'times' : 'question-circle'}`}></i>
+              &nbsp;
+              { active ? 'close' : 'help'}
             </a>
           </li>
+
           <li>
             <a href="https://github.com/noaner/notespace" target="_blank">
               <i className="fa fa-github"></i>
-              &nbsp;view source
+              &nbsp;source
             </a>
           </li>
         </ul>
