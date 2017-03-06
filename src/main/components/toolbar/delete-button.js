@@ -27,7 +27,7 @@ class DeleteButton extends Component {
     const { onClick } = this.props;
 
     return (
-      <button className="btn btn-outline-danger btn-sm" type="button" onClick={onClick}>
+      <button className="btn btn-outline-danger" type="button" onClick={onClick}>
         <i className="fa fa-trash"></i>
       </button>
     );
