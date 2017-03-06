@@ -38,9 +38,8 @@ const OPTIONS = {
   },
   physics: {
     barnesHut: {
-      gravitationalConstant: -3000,
       springLength: 250,
-      centralGravity: 0.1,
+      centralGravity: 0.2,
       avoidOverlap: 0.5
     }
   }
