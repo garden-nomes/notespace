@@ -14,7 +14,7 @@ $gray:                  $base01
 $gray-light:            $base00
 $gray-lighter:          $base2
 
-$body-bg: $base3
+$body-bg: lighten(desaturate($base3, 0%), 4.5%)
 $text-color: $base01
 
 $brand-primary:         $violet
@@ -23,7 +23,7 @@ $brand-info:            $cyan
 $brand-warning:         $orange
 $brand-danger:          $red
 
-$graph-background: $base03
+$graph-background: $base3
 
 @import '../../../node_modules/bootstrap/scss/bootstrap.scss'
 @import '../../../node_modules/font-awesome/scss/font-awesome.scss'
@@ -32,6 +32,9 @@ $graph-background: $base03
 body
   margin: 0
   padding: 0
+
+pre code
+  background: $body-bg !important
 
 #root
   position: relative
@@ -45,7 +48,7 @@ body
   margin: 8px
   kbd
     background: $base1
-    color: $base03
+    color: $graph-background
   a
     font-size: .8rem
     color: inherit
