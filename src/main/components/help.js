@@ -4,15 +4,15 @@ const Help = () => (
   <div>
     <h5>The Graph</h5>
     <ul className="help-text">
-      <li><strong>click</strong> a note to select it</li>
-      <li><strong>⇧ + click</strong> another note to connect them</li>
-      <li><strong>double click</strong> on the graph to create a new note</li>
+      <li><strong>click</strong><i> a note to select it</i></li>
+      <li><strong>⇧ + click</strong><i> another note to connect them</i></li>
+      <li><strong>double click</strong><i> on the graph to create a new note</i></li>
     </ul>
     <h5>Keyboard Shortcuts</h5>
     <ul className="help-text">
-      <li><strong>esc</strong> to deselect a note</li>
-      <li><strong>⇧ + ⌫</strong> to delete current note</li>
-      <li><strong>⇧ + space</strong> to toggle edit mode</li>
+      <li><strong>esc</strong><i> deselect current note</i></li>
+      <li><strong>⇧ + ⌫</strong><i> delete current note</i></li>
+      <li><strong>⇧ + space</strong><i> toggle edit mode</i></li>
     </ul>
   </div>
 );
