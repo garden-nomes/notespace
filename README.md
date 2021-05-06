@@ -1,6 +1,6 @@
 # notespace
 
-Try it out at https://noaner.github.io/notespace!
+Try it out at https://garden-nomes.github.io/notespace!
 
 This is a simple little single-page React app for taking notes in a graph-based
 format (think mind mapping). Created to learn React, but I think it's actually
